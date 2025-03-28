@@ -1,0 +1,25 @@
+create database INCOME;
+use INCOME;
+show databases;
+create table student(id int primary key auto_increment, name varchar(20),age int,city varchar(30));
+desc student;
+alter table student add dob date;
+desc student;
+alter table student modify dob year;
+desc student;
+alter table student drop city;
+desc student;
+create table CUSTOMER(cust_id int primary key auto_increment,address varchar(30),city varchar(20),ph_n0 int);
+desc CUSTOMER; 
+create table PRODUCT(p_id int primary key auto_increment,p_name varchar(20),price int default(0));
+desc PRODUCT;
+create table INVOICE_MASTER(in_id int primary key auto_increment,cust_id int,constraint cust_id foreign key(cust_id)references CUSTOMER(cust_id), inv_date date);
+desc INVOICE_MASTER;
+create table INVOICE_ITEM(in_id int,constraint in_id foreign key(in_id)references INVOICE_MASTER(in_id),p_id int,constraint p_id foreign key(p_id)references PRODUCT(p_id),quantity int);
+desc INVOICE_ITEM;
+show tables;
+alter table CUSTOMER add cust_name varchar(20);
+desc CUSTOMER;
+truncate table student;
+desc student; 
+
